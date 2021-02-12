@@ -1,14 +1,18 @@
-<h1><%= @cocktail.name %></h1>
-
-<h3><ul><%@cocktail.doses.each do |dose|%>
-    <li><%=dose.description + " " + dose.ingredient.name%> <%= link_to delete_dose_path(dose), method: :delete do %>
-
-      <i class="fas fa-trash-alt trash-icon"></i>
-     <% end %>
-      </li>
-  <%end%>
-</ul></h3>
-<h3><%=link_to"Return to cocktails", "/cocktails"%></h3>
-<h3><%=link_to"Add a new dose", new_dose_path(@cocktail)%></h3>
-
+<div class="full-box">
+  <div class="title-box"><%= @cocktail.name %></div>
+  <div class="show-card-box">
+    <div class="details-card card">
+      <h3><%=link_to"Return to cocktails", "/cocktails"%></h3>
+    </div>
+    <div class="list-box">
+      <%@cocktail.doses.each do |dose|%>
+        <div class="dose-card card">
+          <div><%=dose.description + " " + dose.ingredient.name%></div>
+          <div class="trash-button"><%= link_to delete_dose_path(dose), method: :delete do %><i class="fas fa-trash-alt trash-icon"></i><%end%></div>
+        </div>
+      <% end %>
+      <div id="dose-button" class="btn-thin btn-thin-blue">Add a new dose</div>
+    </div>
+  </div>
+</div>
 
