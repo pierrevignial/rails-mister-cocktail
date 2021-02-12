@@ -12,7 +12,7 @@ require 'open-uri'
 
 def tretm(string)
   arrayb = string.split(' ')
-  arrayb.map(&:capitalize)
+  arrayb.map!(&:capitalize)
   arrayb.join(' ')
 end
 

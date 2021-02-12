@@ -1,0 +1,11 @@
+<h2>New dose</h2>
+<%= form_for(@dose) do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.fields_for @ingredient do |fi| %>
+    <%= fi.label :Ingredient%>
+    <%= fi.text_field :name%>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<%= hidden_field_tag(:cocktail, params["cocktail"]) %>

@@ -5,7 +5,12 @@ class IngredientsController < ApplicationController
 
   def new; end
 
-  def create; end
+  def create
+    @ingredient = ingredient.new(ingredient_params)
+    @ingredient.save
+
+    redirect_to cocktail_path(@ingredient.cocktail)
+  end
 
   def show; end
 
@@ -14,4 +19,10 @@ class IngredientsController < ApplicationController
   def update; end
 
   def destroy; end
+
+  private
+
+  def ingredient_params
+    params.require(:doses).permit(:ingredient).permit(:name)
+  end
 end

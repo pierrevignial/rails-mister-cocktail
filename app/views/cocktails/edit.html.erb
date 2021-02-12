@@ -1,0 +1,21 @@
+<h1><%= @cocktail.name %></h1>
+
+<h3><ul><%@cocktail.doses.each do |dose|%>
+    <li><%=dose.description + " " + dose.ingredient.name%></li>
+  <%end%>
+</ul></h3>
+<br>
+<h2>Nww dose</h2>
+<%= form_for(@dose) do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= form_for(@ingredient) do |f| %>
+    <%= f.label "Ingredient:"%>
+    <%= f.text_field :name%>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<h3><%=link_to"Return to cocktails", "/cocktails"%></h3>
+<h3><%=link_to"Save this cocktail", "/cocktails/#{@cocktail.id}"%></h3>
+
+
